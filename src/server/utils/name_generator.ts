@@ -1,4 +1,5 @@
-const ADJECTIVES = ['Happy', 'Glamurous', 'Affectionate', 'Ambitious', 'Compassionate', 'Courageous', 'Empathetic', 'Exuberant', 'Generous', 'Inventive', 'Philosofical', 'Sensible', 'Sympathetic', 'Witty'];
+const ADJECTIVES = ['Alegre', 'Glamoroso', 'Afectivo', 'Ambicioso', 'Comprensivo', 'Corajudo', 'Empático', 'Exuberante', 'Generoso', 'Inventivo', 'Folosófico', 'Sensible', 'Empåtico', 'Eufórico'];
+// const ADJECTIVES = ['Happy', 'Glamurous', 'Affectionate', 'Ambitious', 'Compassionate', 'Courageous', 'Empathetic', 'Exuberant', 'Generous', 'Inventive', 'Philosofical', 'Sensible', 'Sympathetic', 'Witty'];
 const THINGS = [
   '🐞',
   '🐠',

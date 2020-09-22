@@ -19,7 +19,7 @@ chatEl.querySelector('form').addEventListener('submit', (e) => {
   input.value = "";
 });
 
-gameplay.querySelector('.info a').addEventListener("click", (e) => {
+gameplay.querySelector('.tools a').addEventListener("click", (e) => {
   e.preventDefault();
 
   if (room) {
@@ -35,13 +35,21 @@ const ctx = canvas.getContext('2d');
 const prevCanvas = gameplay.querySelector('.drawing-preview') as HTMLCanvasElement;
 const prevCtx = prevCanvas.getContext('2d');
 
+
+
 export async function showGameplay(roomName: string) {
   gameplay.classList.remove('hidden');
+
+  const pano = document.getElementById('pano');
+  canvas.width = pano.clientWidth;
+  canvas.height = pano.clientHeight;
+  prevCanvas.width = pano.clientWidth;
+  prevCanvas.height = pano.clientHeight;
 
   // clear previous chat messages.
   chatMessagesEl.innerHTML = "";
   peopleEl.innerHTML = "";
-  gameplay.querySelector('.mode').innerHTML = `${roomName} session`;
+  gameplay.querySelector('.mode').innerHTML = `Sesión de ${roomName}`;
 
   clearCanvas(ctx);
   clearCanvas(prevCtx);
@@ -72,7 +80,7 @@ export async function showGameplay(roomName: string) {
       if (change.field === "countdown") {
         countdownEl.innerHTML = (change.value > 0)
           ? millisecondsToStr(change.value)
-          : "Time is up!";
+          : "Se acabó el tiempo!";
       }
     });
   };

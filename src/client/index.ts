@@ -4,7 +4,8 @@ import { showHome, hideHome } from "./pages/home";
 import { showDrawing, hideDrawing } from "./pages/drawing";
 import { hideGameplay, showGameplay } from "./pages/gameplay";
 
-const gameModes = ['2minutes', '5minutes', '1hour', '1day', '1week'];
+const gameModes = ['sala1', 'sala2', 'sala3', 'sala4', 'sala5'];
+// const gameModes = ['sala', '5minutes', '1hour', '1day', '1week'];
 
 /**
  * Navigation

@@ -5,6 +5,8 @@ html, body {
   font-family: 'Varela Round', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 22px;
   background: #f0f0f0;
+  color: #89a0b7;               
+  background-color: #262626;
 }
 
 #app {
@@ -14,8 +16,10 @@ html, body {
 
 input {
   padding: 6px;
-  border-radius: 5px;
+  border-radius: 8px;
   font-size: inherit;
+  border: 2px;
+  border-color: gray;
 }
 
 ul {
@@ -58,20 +62,23 @@ h1, h2, h3 {
   font-size: 17px;
   height: 100vh;
   width: 300px;
-  border-right: 1px dashed #000;
+  border-right: 1px dashed #424242;
 }
 
 #gameplay section.sidebar .info {
-  /* border-radius: 4px; */
+  border-radius: 10px;
   text-align: center;
-  background: rgba(255, 0, 144);
+  background: #424242;
   color: #fff;
   padding: 8px;
+  margin-left: 6px ;
+  margin-right: 4px ;
+  margin-top: 5px;
 }
 
 #gameplay section.sidebar .info .mode {
   background: #fff;
-  color: rgba(255, 0, 144);
+  color: #89a0b7;
   border-radius: 4px;
   font-size: 0.9em;
   padding: 4px 8px;
@@ -79,16 +86,7 @@ h1, h2, h3 {
   display: inline-block;
 }
 
-#gameplay section.sidebar .info a {
-  position: absolute;
-  left: 0;
-  top: 0;
-  background: #fff;
-  color: rgba(255, 0, 144);
-  border-radius: 4px;
-  font-size: 0.9em;
-  padding: 4px 8px;
-}
+
 
 #gameplay section.sidebar .people {
   flex: 1;
@@ -101,7 +99,8 @@ h1, h2, h3 {
 }
 
 #gameplay section.sidebar .people li.you {
-  background: rgba(0, 255, 0, 0.3);
+  color: white;
+  background: #5d5f5d80;
   border-radius: 4px;
 }
 
@@ -116,37 +115,58 @@ h1, h2, h3 {
   padding: 0.6em;
 }
 
+#gameplay section.sidebar .chat form {
+  padding: 2px 4px 12px 8px;
+}
+
 #gameplay .drawing-area {
   position: relative;
-  width: 800px;
-  height: 740px;
+  width: 100vw;
+  height: 100vh;
+}
+/* 800x740 */
+
+#pano {
+  width: 100vw;
+  height: 100vh;
 }
 
 .tools {
   padding: 4px;
 }
 .tools label {
-  border-radius: 4px;
+  border-radius: 8px;
   padding: 4px 8px;
   background: #c2c2c2;
 }
 
 .tools input[type=radio] { display: none; }
-.tools input[type=radio]:checked + label { background: #00ff0f; }
+.tools input[type=radio]:checked + label { color: white; background: #5f5d5d; }
+
+.tools a {
+  background: #c2c2c2;
+  color: #89a0b7;
+  border-radius: 9px;
+  font-size: 0.9em;
+  padding: 6px 20px;
+}
+
+
 
 #gameplay canvas.drawing {
   position: absolute;
-  left: 0;
-  top: 46px;
+  left: 5px;
+  top: 50px;
+  border-radius: 8px;
   background: #fff;
 }
 #gameplay canvas.drawing-preview {
   position: absolute;
-  left: 0;
-  top: 46px;
+  left: 5px;
+  top: 50px;
+  border-radius: 8px;
 }
 
-/* loading spinner! */
 .spinner {
   position: absolute;
   left: 0;

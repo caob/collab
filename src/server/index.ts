@@ -21,15 +21,13 @@ import mongoose from 'mongoose';
 import { DrawingRoom } from "./rooms/DrawingRoom";
 import Drawing from "./db/Drawing";
 
-export const port = Number(process.env.PORT || 8080);
+export const port = Number(process.env.PORT || 8088);
 export const endpoint = "localhost";
 
 export let STATIC_DIR: string;
 
-/**
- * Connect to MongoDB
- */
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/colyseus', {
+
+mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://caob:popo0099@cluster0.wybzn.mongodb.net/caob', {
   autoIndex: true,
   useCreateIndex: true,
   useFindAndModify: true,
@@ -39,11 +37,16 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/colyseus'
 const app = express();
 const gameServer = new Server({ server: http.createServer(app) });
 
-gameServer.define("2minutes", DrawingRoom, { expiration: 60 * 2 });
-gameServer.define("5minutes", DrawingRoom, { expiration: 60 * 5 });
-gameServer.define("1hour", DrawingRoom, { expiration: 60 * 60 });
-gameServer.define("1day", DrawingRoom, { expiration: 60 * 60 * 24 });
-gameServer.define("1week", DrawingRoom, { expiration: 60 * 60 * 24 * 7 });
+gameServer.define("sala1", DrawingRoom, { expiration: 60 * 5 });
+gameServer.define("sala2", DrawingRoom, { expiration: 60 * 5 });
+gameServer.define("sala3", DrawingRoom, { expiration: 60 * 5 });
+gameServer.define("sala4", DrawingRoom, { expiration: 60 * 5 });
+gameServer.define("sala5", DrawingRoom, { expiration: 60 * 5});
+// gameServer.define("2minutes", DrawingRoom, { expiration: 60 * 2 });
+// gameServer.define("5minutes", DrawingRoom, { expiration: 60 * 5 });
+// gameServer.define("1hour", DrawingRoom, { expiration: 60 * 60 });
+// gameServer.define("1day", DrawingRoom, { expiration: 60 * 60 * 24 });
+// gameServer.define("1week", DrawingRoom, { expiration: 60 * 60 * 24 * 7 });
 
 if (process.env.NODE_ENV !== "production") {
     const webpackCompiler = webpack(webpackConfig({}));

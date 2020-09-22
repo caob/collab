@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Drawing Game</title>
+    <title>Intuit.drawing</title>
 
     <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
 
@@ -13,19 +13,19 @@
     <div id="app">
 
       <div id="home">
-        <h2>Collaborative Drawing Prototype</h2>
-        <input id="username" type="text" placeholder="Nickname" />
+        <h2>Pizarra colaborativa</h2>
+        <input id="username" type="text" placeholder="Apodo (opcional)" />
 
-        <h3>Drawing sessions</h3>
+        <h3>Sesiones de Pizarra</h3>
         <ul>
-          <li><a href="#" data-room="2minutes">2 minutes</a> |</li>
-          <li><a href="#" data-room="5minutes">5 minutes</a> |</li>
-          <li><a href="#" data-room="1hour">1 hour</a> |</li>
-          <li><a href="#" data-room="1day">1 day</a> |</li>
-          <li><a href="#" data-room="1week">1 week</a></li>
+          <li><a href="#" data-room="sala1">Sala 1</a> |</li>
+          <li><a href="#" data-room="sala2">Sala 2</a> |</li>
+          <li><a href="#" data-room="sala3">Sala 3</a> |</li>
+          <li><a href="#" data-room="sala4">Sala 4</a> |</li>
+          <li><a href="#" data-room="sala5">Sala 5</a></li>
         </ul>
 
-        <h3>Previous sessions</h3>
+        <h3>Sesiones Previas</h3>
         <ul class="previous-sessions"></ul>
       </div>
 
@@ -35,15 +35,14 @@
           <div class="info">
             <div class="mode"></div>
             <div class="countdown"></div>
-            <a href="#">&laquo;Back</a>
           </div>
 
           <ul class="people"></ul>
           <div class="chat">
             <ul></ul>
             <form onsubmit="">
-              <input type="text" placeholder="Chat" maxlength="120" />
-              <input type="submit" value="send" />
+              <input type="text" placeholder="chatear aquí" maxlength="120" />
+              <!-- <input type="submit" value="send" /> -->
             </form>
           </div>
         </section>
@@ -53,28 +52,32 @@
 
           <div class="tools">
             <input type="radio" id="brush_s" name="brush" value="s" checked="checked" />
-            <label for="brush_s">Sketch</label>
+            <label for="brush_s">Brocheta</label>
 
             <!-- <input type="radio" id="brush_r" name="brush" value="r" />
             <label for="brush_r">Rounded</label> -->
 
             <input type="radio" id="brush_m" name="brush" value="m" />
-            <label for="brush_m">Marker</label>
+            <label for="brush_m">Marcador</label>
 
             <input type="radio" id="brush_p" name="brush" value="p" />
-            <label for="brush_p">Pen</label>
+            <label for="brush_p">Lapiz</label>
 
-            <input class="jscolor colorpicker" value="#000000" />
+            <input class="jscolor colorpicker" value="#000000" style="text-align: center;"/>
+
+            <a href="#">&laquo;Salir</a>
           </div>
 
-          <canvas class="drawing" width="800" height="600"></canvas>
-          <canvas class="drawing-preview" width="800" height="600"></canvas>
+          <div id="pano">
+            <canvas class="drawing"></canvas>
+            <canvas class="drawing-preview"></canvas>
+          </div>
         </section>
 
       </div>
 
       <div id="drawing" class="hidden">
-        <canvas width="800" height="600"></canvas>
+        <canvas width="800" height="600" style="background-color: white;"></canvas>
       </div>
 
     </div>
