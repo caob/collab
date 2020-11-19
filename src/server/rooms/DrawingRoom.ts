@@ -76,10 +76,24 @@ export class DrawingRoom extends Room<State> {
 
   onLeave(client: Client) {
     this.state.removePlayer(client.sessionId);
+   
+    
+    if (!this.autoDispose && Object.keys(this.state.players).length === 0) {
+      this.autoDispose = true;
+      this.resetAutoDisposeTimeout(5); 
+      console.log("No quedaron participantes en la sala");
+    }
+  }
+
+  // new by caob v1.5
+  onClose(client: Client) {
+    this.state.removePlayer(client.sessionId);
+    this.autoDispose = true;
+    this.resetAutoDisposeTimeout(5);
   }
 
   async onDispose() {
-    console.log("Disposing room, let's persist its result!");
+    console.log("Liberando la sala... aqui es cuando se graba el resultado");
 
     if (this.state.paths.length > 0) {
       await Drawing.create({

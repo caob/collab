@@ -5,11 +5,11 @@ import brushFunctions from "../brushes";
 
 let room: Room<State>;
 
-const gameplay = document.getElementById('gameplay');
-const countdownEl = gameplay.querySelector('.countdown');
+const pizarra = document.getElementById('pizarra');
+const countdownEl = pizarra.querySelector('.countdown');
 
-const peopleEl = gameplay.querySelector('.people');
-const chatEl = gameplay.querySelector('.chat');
+const peopleEl = pizarra.querySelector('.people');
+const chatEl = pizarra.querySelector('.chat');
 const chatMessagesEl = chatEl.querySelector('ul');
 
 chatEl.querySelector('form').addEventListener('submit', (e) => {
@@ -19,46 +19,48 @@ chatEl.querySelector('form').addEventListener('submit', (e) => {
   input.value = "";
 });
 
-gameplay.querySelector('.tools a').addEventListener("click", (e) => {
+pizarra.querySelector('.tools a').addEventListener("click", (e) => {
   e.preventDefault();
 
   if (room) {
     room.leave();
+    
   }
+  
 
   location.hash = "#";
 });
 
-const canvas = gameplay.querySelector('.drawing') as HTMLCanvasElement;
+const canvas = pizarra.querySelector('.drawing') as HTMLCanvasElement;
 const ctx = canvas.getContext('2d');
 
-const prevCanvas = gameplay.querySelector('.drawing-preview') as HTMLCanvasElement;
+const prevCanvas = pizarra.querySelector('.drawing-preview') as HTMLCanvasElement;
 const prevCtx = prevCanvas.getContext('2d');
 
 
 
-export async function showGameplay(roomName: string) {
-  gameplay.classList.remove('hidden');
+export async function showPizarra(roomName: string) {
+  pizarra.classList.remove('hidden');
 
   const pano = document.getElementById('pano');
-  canvas.width = pano.clientWidth;
-  canvas.height = pano.clientHeight;
-  prevCanvas.width = pano.clientWidth;
-  prevCanvas.height = pano.clientHeight;
+  canvas.width = 800; //pano.clientWidth;
+  canvas.height = 600; //pano.clientHeight;
+  prevCanvas.width = 800; //pano.clientWidth;
+  prevCanvas.height = 600; // pano.clientHeight;
 
   // clear previous chat messages.
   chatMessagesEl.innerHTML = "";
   peopleEl.innerHTML = "";
-  gameplay.querySelector('.mode').innerHTML = `Sesión de ${roomName}`;
+  pizarra.querySelector('.mode').innerHTML = `Sesión de ${roomName}`;
 
   clearCanvas(ctx);
   clearCanvas(prevCtx);
 
-  gameplay.classList.add('loading');
+  pizarra.classList.add('loading');
   room = await client.joinOrCreate(roomName, {
     nickname: (document.getElementById('username') as HTMLInputElement).value
   });
-  room.onStateChange.once(() => gameplay.classList.remove('loading'));
+  room.onStateChange.once(() => pizarra.classList.remove('loading'));
 
   room.state.players.onAdd = (player, sessionId) => {
     const playerEl = document.createElement("li");
@@ -100,8 +102,8 @@ export async function showGameplay(roomName: string) {
   });
 }
 
-export function hideGameplay() {
-  gameplay.classList.add('hidden');
+export function hidePizarra() {
+  pizarra.classList.add('hidden');
 }
 
 export function clearCanvas(ctx) {
@@ -140,7 +142,7 @@ prevCanvas.addEventListener("touchend", (e) => endPath());
 /**
  * Tools: colorpicker
  */
-gameplay.querySelector('.colorpicker').addEventListener("change", (e) => {
+pizarra.querySelector('.colorpicker').addEventListener("change", (e) => {
   color = parseInt("0x" + (e.target as HTMLInputElement).value);
 });
 

@@ -2,10 +2,10 @@ import "./css/index.css";
 import "./thirdparty/jscolor";
 import { showHome, hideHome } from "./pages/home";
 import { showDrawing, hideDrawing } from "./pages/drawing";
-import { hideGameplay, showGameplay } from "./pages/gameplay";
+import { hidePizarra, showPizarra } from "./pages/pizarra";
 
-const gameModes = ['sala1', 'sala2', 'sala3', 'sala4', 'sala5'];
-// const gameModes = ['sala', '5minutes', '1hour', '1day', '1week'];
+const salas = ['sala1', 'sala2', 'sala3', 'sala4', 'sala5'];
+// const salas = ['sala', '5minutes', '1hour', '1day', '1week'];
 
 /**
  * Navigation
@@ -14,11 +14,11 @@ window.addEventListener("hashchange", (e) => {
   const hash = window.location.hash.substr(1);
   if (hash.length === 0) {
     showHome();
-    hideGameplay();
+    hidePizarra();
     hideDrawing();
 
-  } else if (gameModes.indexOf(hash) !== -1) {
-    showGameplay(hash);
+  } else if (salas.indexOf(hash) !== -1) {
+    showPizarra(hash);
     hideHome();
     hideDrawing();
 

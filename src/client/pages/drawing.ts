@@ -1,7 +1,7 @@
 import { get } from "httpie";
 import { State, DEFAULT_BRUSH, BRUSH } from "../../server/rooms/State";
 import brushFunctions from "../brushes";
-import { clearCanvas } from "./gameplay";
+import { clearCanvas } from "./pizarra";
 
 const drawingEl = document.querySelector('#drawing');
 const drawingCanvas = drawingEl.querySelector('canvas');

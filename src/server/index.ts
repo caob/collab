@@ -26,8 +26,8 @@ export const endpoint = "localhost";
 
 export let STATIC_DIR: string;
 
-
-mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://caob:popo0099@cluster0.wybzn.mongodb.net/caob', {
+//process.env.MONGODB_URI || 
+mongoose.connect('mongodb+srv://caob:popo0099@cluster0.wybzn.mongodb.net/caob', {
   autoIndex: true,
   useCreateIndex: true,
   useFindAndModify: true,
@@ -35,18 +35,18 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://caob:popo0099@cluster
 });
 
 const app = express();
-const gameServer = new Server({ server: http.createServer(app) });
+const caobsvr = new Server({ server: http.createServer(app) });
 
-gameServer.define("sala1", DrawingRoom, { expiration: 60 * 5 });
-gameServer.define("sala2", DrawingRoom, { expiration: 60 * 5 });
-gameServer.define("sala3", DrawingRoom, { expiration: 60 * 5 });
-gameServer.define("sala4", DrawingRoom, { expiration: 60 * 5 });
-gameServer.define("sala5", DrawingRoom, { expiration: 60 * 5});
-// gameServer.define("2minutes", DrawingRoom, { expiration: 60 * 2 });
-// gameServer.define("5minutes", DrawingRoom, { expiration: 60 * 5 });
-// gameServer.define("1hour", DrawingRoom, { expiration: 60 * 60 });
-// gameServer.define("1day", DrawingRoom, { expiration: 60 * 60 * 24 });
-// gameServer.define("1week", DrawingRoom, { expiration: 60 * 60 * 24 * 7 });
+caobsvr.define("sala1", DrawingRoom, { expiration: 60 * 2 });
+caobsvr.define("sala2", DrawingRoom, { expiration: 60 * 5 });
+caobsvr.define("sala3", DrawingRoom, { expiration: 60 * 60 });
+caobsvr.define("sala4", DrawingRoom, { expiration: 60 * 60 * 24 });
+caobsvr.define("sala5", DrawingRoom, { expiration: 60 * 60 * 24 });
+// caobsvr.define("2minutes", DrawingRoom, { expiration: 60 * 2 });
+// caobsvr.define("5minutes", DrawingRoom, { expiration: 60 * 5 });
+// caobsvr.define("1hour", DrawingRoom, { expiration: 60 * 60 });
+// caobsvr.define("1day", DrawingRoom, { expiration: 60 * 60 * 24 });
+// caobsvr.define("1week", DrawingRoom, { expiration: 60 * 60 * 24 * 7 });
 
 if (process.env.NODE_ENV !== "production") {
     const webpackCompiler = webpack(webpackConfig({}));
@@ -82,7 +82,6 @@ app.get('/drawings/:id', async (req, res) => {
 
 // add colyseus monitor
 const auth = basicAuth({ users: { 'admin': 'admin' }, challenge: true });
-app.use("/colyseus", auth, monitor(gameServer));
+app.use("/colyseus", auth, monitor(caobsvr));
 
-gameServer.listen(port);
-console.log(`Listening on http://${endpoint}:${port}`);
+export let server = caobsvr;
