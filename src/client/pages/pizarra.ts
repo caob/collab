@@ -8,6 +8,9 @@ let room: Room<State>;
 const pizarra = document.getElementById('pizarra');
 const countdownEl = pizarra.querySelector('.countdown');
 
+const sideBar = pizarra.querySelector('.sidebar');
+const drawBar = pizarra.querySelector('.drawing-area');
+
 const peopleEl = pizarra.querySelector('.people');
 const chatEl = pizarra.querySelector('.chat');
 const chatMessagesEl = chatEl.querySelector('ul');
@@ -18,6 +21,12 @@ chatEl.querySelector('form').addEventListener('submit', (e) => {
   room.send(['chat', input.value]);
   input.value = "";
 });
+
+pizarra.querySelector('.sidebar img').addEventListener("click", (e) => {
+  e.preventDefault();
+  sideBar.classList.toggle('sidebar-small');
+  drawBar.classList.toggle('drawing-area-large');
+})
 
 pizarra.querySelector('.tools a').addEventListener("click", (e) => {
   e.preventDefault();
@@ -51,8 +60,7 @@ export async function showPizarra(roomName: string) {
   // clear previous chat messages.
   chatMessagesEl.innerHTML = "";
   peopleEl.innerHTML = "";
-  pizarra.querySelector('.mode').innerHTML = `Sesión de ${roomName}`;
-
+  pizarra.querySelector('.mode').innerHTML = `Sala ${roomName.substr(7)}`;
   clearCanvas(ctx);
   clearCanvas(prevCtx);
 

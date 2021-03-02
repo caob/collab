@@ -38,7 +38,7 @@
         </svg>
 
         <h2 class="title">Pizarra colaborativa</h2>
-        <p class="version">intuit.collab.drawing v1.05</p>
+        <p class="version">collab.intuit.stream v1.18</p>
         <input id="username" type="text" placeholder="Apodo (opcional)" />
 
         <h3>Salas disponibles</h3>
@@ -46,17 +46,19 @@
           <li><a href="#" data-room="sala1">Sala 1</a> |</li>
           <li><a href="#" data-room="sala2">Sala 2</a> |</li>
           <li><a href="#" data-room="sala3">Sala 3</a> |</li>
-          <li><a href="#" data-room="sala4">Sala 4</a> |</li>
-          <li><a href="#" data-room="sala5">Sala 5</a></li>
+          <li><a href="#" data-room="sala4">Sala 4</a></li>
         </ul>
 
-        <h3>Ultimas sesiones</h3>
+        <div class="flexi">
+          <h3>Ultimas sesiones</h3>
+          <button class="tooltip--right" data-tooltip="click para actualizar" onClick="window.location.reload();">⎘</button>
+        </div>
         <ul class="previous-sessions"></ul>
       </div>
 
       <div id="pizarra" class="hidden">
-
         <section class="sidebar">
+          <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkJz48c3ZnIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDMyIDMyIiBoZWlnaHQ9IjMycHgiIGlkPSJMYXllcl8xIiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAzMiAzMiIgd2lkdGg9IjMycHgiIHhtbDpzcGFjZT0icHJlc2VydmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjxnIGlkPSJCdWJibGVfeDJDX19jaGF0X3gyQ19fY2hhdF9idWJibGVfeDJDX19jb21tdW5pY2F0aW9uX3gyQ19fbWVzc2FnZV94MkNfX2ZlZWRiYWNrXzFfIj48Zz48ZyBpZD0iY2hhdF8yXyI+PGc+PGc+PHBhdGggZD0iTTIwLjUsMjZoLTRjLTAuMjc2LDAtMC41LTAuMjI0LTAuNS0wLjVzMC4yMjQtMC41LDAuNS0wLjVoNGMwLjI3NSwwLDAuNS0wLjIyNSwwLjUtMC41di0zICAgICAgIGMwLTAuMjc2LDAuMjI0LTAuNSwwLjUtMC41czAuNSwwLjIyNCwwLjUsMC41djNDMjIsMjUuMzI3LDIxLjMyNywyNiwyMC41LDI2eiIgZmlsbD0iIzI2MzIzOCIvPjxwYXRoIGQ9Ik05LjUsMzFjLTAuMDgzLDAtMC4xNjUtMC4wMjEtMC4yNC0wLjA2MkM5LjEsMzAuODUxLDksMzAuNjgzLDksMzAuNVYyOUg0LjVDNC4yMjQsMjksNCwyOC43NzYsNCwyOC41ICAgICAgIFM0LjIyNCwyOCw0LjUsMjhoNWMwLjI3NiwwLDAuNSwwLjIyNCwwLjUsMC41djEuMDg5TDE0LjA2OCwyN0wxMCwyNC40MTFWMjUuNWMwLDAuMjc2LTAuMjI0LDAuNS0wLjUsMC41aC03ICAgICAgIEMxLjY3MywyNiwxLDI1LjMyNywxLDI0LjV2LTExQzEsMTIuNjczLDEuNjczLDEyLDIuNSwxMkg0VjguNWMwLTAuMjE1LDAuMTM4LTAuNDA2LDAuMzQyLTAuNDc1ICAgICAgIEM0LjU0Niw3Ljk2LDQuNzcxLDguMDI3LDQuOSw4LjJMNy43NSwxMkg4LjVDOC43NzYsMTIsOSwxMi4yMjQsOSwxMi41UzguNzc2LDEzLDguNSwxM2gtMWMtMC4xNTcsMC0wLjMwNi0wLjA3NC0wLjQtMC4yTDUsMTAgICAgICAgdjIuNUM1LDEyLjc3Niw0Ljc3NiwxMyw0LjUsMTNoLTJDMi4yMjUsMTMsMiwxMy4yMjUsMiwxMy41djExQzIsMjQuNzc1LDIuMjI1LDI1LDIuNSwyNUg5di0xLjVjMC0wLjE4MywwLjEtMC4zNTEsMC4yNi0wLjQzOCAgICAgICBjMC4xNi0wLjA4NywwLjM1NC0wLjA4LDAuNTA5LDAuMDE3bDUuNSwzLjVDMTUuNDEzLDI2LjY3LDE1LjUsMjYuODI5LDE1LjUsMjdzLTAuMDg3LDAuMzMtMC4yMzEsMC40MjJsLTUuNSwzLjUgICAgICAgQzkuNjg3LDMwLjk3NCw5LjU5NCwzMSw5LjUsMzF6IiBmaWxsPSIjMjYzMjM4Ii8+PC9nPjxnPjxwYXRoIGQ9Ik0yNy41LDI0Yy0wLjE1NCwwLTAuMzA0LTAuMDcxLTAuNC0wLjJMMjQuMjUsMjBIMTEuNWMtMC44MjcsMC0xLjUtMC42NzMtMS41LTEuNXYtMTEgICAgICAgQzEwLDYuNjczLDEwLjY3Myw2LDExLjUsNmg0QzE1Ljc3Niw2LDE2LDYuMjI0LDE2LDYuNVMxNS43NzYsNywxNS41LDdoLTRDMTEuMjI1LDcsMTEsNy4yMjUsMTEsNy41djExICAgICAgIGMwLDAuMjc1LDAuMjI1LDAuNSwwLjUsMC41aDEzYzAuMTU3LDAsMC4zMDYsMC4wNzQsMC40LDAuMkwyNywyMnYtMi41YzAtMC4yNzYsMC4yMjQtMC41LDAuNS0wLjVoMmMwLjI3NSwwLDAuNS0wLjIyNSwwLjUtMC41ICAgICAgIHYtNmMwLTAuMjc2LDAuMjI0LTAuNSwwLjUtMC41czAuNSwwLjIyNCwwLjUsMC41djZjMCwwLjgyNy0wLjY3MywxLjUtMS41LDEuNUgyOHYzLjVjMCwwLjIxNS0wLjEzOCwwLjQwNi0wLjM0MiwwLjQ3NSAgICAgICBDMjcuNjA2LDIzLjk5MSwyNy41NTMsMjQsMjcuNSwyNHoiIGZpbGw9IiMyNjMyMzgiLz48cGF0aCBkPSJNMjcuNSwyNGMtMC4xNTQsMC0wLjMwNC0wLjA3MS0wLjQtMC4yTDI0LjI1LDIwSDIyLjVjLTAuMjc2LDAtMC41LTAuMjI0LTAuNS0wLjVzMC4yMjQtMC41LDAuNS0wLjVoMiAgICAgICBjMC4xNTcsMCwwLjMwNiwwLjA3NCwwLjQsMC4yTDI3LDIydi0yLjVjMC0wLjI3NiwwLjIyNC0wLjUsMC41LTAuNWgyYzAuMjc1LDAsMC41LTAuMjI1LDAuNS0wLjV2LTExQzMwLDcuMjI1LDI5Ljc3NSw3LDI5LjUsNyAgICAgICBIMjN2MS41YzAsMC4xODMtMC4xLDAuMzUxLTAuMjYsMC40MzhzLTAuMzU0LDAuMDgxLTAuNTA5LTAuMDE3bC01LjUtMy41QzE2LjU4Nyw1LjMzLDE2LjUsNS4xNzEsMTYuNSw1ICAgICAgIHMwLjA4Ny0wLjMzLDAuMjMxLTAuNDIybDUuNS0zLjVjMC4xNTQtMC4wOTgsMC4zNDktMC4xMDQsMC41MDktMC4wMTdTMjMsMS4zMTcsMjMsMS41VjNoNC41QzI3Ljc3NiwzLDI4LDMuMjI0LDI4LDMuNSAgICAgICBTMjcuNzc2LDQsMjcuNSw0aC01QzIyLjIyNCw0LDIyLDMuNzc2LDIyLDMuNVYyLjQxMUwxNy45MzIsNUwyMiw3LjU4OVY2LjVDMjIsNi4yMjQsMjIuMjI0LDYsMjIuNSw2aDcgICAgICAgQzMwLjMyNyw2LDMxLDYuNjczLDMxLDcuNXYxMWMwLDAuODI3LTAuNjczLDEuNS0xLjUsMS41SDI4djMuNWMwLDAuMjE1LTAuMTM4LDAuNDA2LTAuMzQyLDAuNDc1ICAgICAgIEMyNy42MDYsMjMuOTkxLDI3LjU1MywyNCwyNy41LDI0eiIgZmlsbD0iIzI2MzIzOCIvPjwvZz48L2c+PC9nPjxjaXJjbGUgY3g9IjIuNSIgY3k9IjI4LjUiIGZpbGw9IiMyNjMyMzgiIHI9IjAuNSIvPjxjaXJjbGUgY3g9IjI5LjUiIGN5PSIzLjUiIGZpbGw9IiMyNjMyMzgiIHI9IjAuNSIvPjwvZz48Zz48cGF0aCBkPSJNMjIuNSwxNEwyMi41LDE0YzAuMjc2LDAsMC41LTAuMjI0LDAuNS0wLjVTMjIuNzc2LDEzLDIyLjUsMTNsMCwwYy0wLjI3NiwwLTAuNSwwLjIyNC0wLjUsMC41ICAgIFMyMi4yMjQsMTQsMjIuNSwxNHoiIGZpbGw9IiMyNjMyMzgiLz48L2c+PGc+PHBhdGggZD0iTTIwLjUxNiwxMy45ODRMMjAuNTE2LDEzLjk4NGMwLjI3NiwwLDAuNS0wLjIyNCwwLjUtMC41cy0wLjIyNC0wLjUtMC41LTAuNWwwLDAgICAgYy0wLjI3NiwwLTAuNSwwLjIyNC0wLjUsMC41UzIwLjIzOSwxMy45ODQsMjAuNTE2LDEzLjk4NHoiIGZpbGw9IiMyNjMyMzgiLz48L2c+PGc+PHBhdGggZD0iTTE4LjUxNiwxMy45ODRMMTguNTE2LDEzLjk4NGMwLjI3NiwwLDAuNS0wLjIyNCwwLjUtMC41cy0wLjIyNC0wLjUtMC41LTAuNWwwLDAgICAgYy0wLjI3NiwwLTAuNSwwLjIyNC0wLjUsMC41UzE4LjIzOSwxMy45ODQsMTguNTE2LDEzLjk4NHoiIGZpbGw9IiMyNjMyMzgiLz48L2c+PC9nPjwvc3ZnPg==">
           <div class="info">
             <div class="mode"></div>
             <div class="countdown"></div>
@@ -76,32 +78,45 @@
           <div class="spinner"><div></div><div></div><div></div><div></div></div>
 
           <div class="tools">
-            <input type="radio" id="brush_s" name="brush" value="s" checked="checked" />
-            <label for="brush_s">Brocheta</label>
-
-            <!-- <input type="radio" id="brush_r" name="brush" value="r" />
-            <label for="brush_r">Rounded</label> -->
-
-            <input type="radio" id="brush_m" name="brush" value="m" />
-            <label for="brush_m">Marcador</label>
-
-            <input type="radio" id="brush_p" name="brush" value="p" />
-            <label for="brush_p">Lapiz</label>
+            <label data-tooltip="Brocheta" class="tooltip--triangle">
+              <input type="radio" id="brush_s" name="brush" value="s"checked="checked" />
+              <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTc5MS45OTk5OTk5OTk5OTk4IiBoZWlnaHQ9IjE3OTEuOTk5OTk5OTk5OTk5OCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KCiA8Zz4KICA8dGl0bGU+YmFja2dyb3VuZDwvdGl0bGU+CiAgPHJlY3QgZmlsbD0ibm9uZSIgaWQ9ImNhbnZhc19iYWNrZ3JvdW5kIiBoZWlnaHQ9IjQwMiIgd2lkdGg9IjU4MiIgeT0iLTEiIHg9Ii0xIi8+CiA8L2c+CiA8Zz4KICA8dGl0bGU+TGF5ZXIgMTwvdGl0bGU+CiAgPHBhdGggc3Ryb2tlPSJudWxsIiBpZD0ic3ZnXzEiIGQ9Im0xNDc0LjM2MTI2NCwxNjUuOTMwMDE2cTU3LjY3MTEyNSwwIDEwMC45MjQ0NjksMzguMjQ3NDg0dDQzLjI1MzM0NCw5NS44MjQzNDJxMCw1MS44MTkxNzIgLTM3LjA3NDI5NSwxMjQuMjAxNTA4cS0yNzMuNTI1OTA4LDUxNy4zNjkxOTcgLTM4My4xMDEwNDUsNjE4LjUzOTk2MnEtNzkuOTE1NzAyLDc0Ljg0OTkxNiAtMTc5LjYwNDM2MSw3NC44NDk5MTZxLTEwMy44MDgwMjUsMCAtMTc4LjM2ODU1MSwtNzYuMDgzNzA1dC03NC41NjA1MjYsLTE4MC41NDQ1NzdxMCwtMTA1LjI4MzM5OCA3NS43OTYzMzYsLTE3NC4zNzU2MjhsNTI1LjYzMTExMiwtNDc2LjI0Mjg3cTQ4LjYwODUyLC00NC40MTY0MzMgMTA3LjEwMzUxOCwtNDQuNDE2NDMzem0tNzQ4LjkwMDc1Myw4NTAuNDkyNDQ4cTMyLjEzMTA1NSw2Mi41MTIwMTcgODcuNzQyNDk3LDEwNi45Mjg0NTF0MTIzLjk5MjkxOSw2Mi41MTIwMTdsMC44MjM4NzMsNTguMzk5Mzg1cTMuMjk1NDkzLDE3NS4xOTgxNTQgLTEwNi42OTE1ODEsMjg1LjQxNjcxMXQtMjg3LjExOTgxNiwxMTAuMjE4NTU3cS0xMDEuMzM2NDA2LDAgLTE3OS42MDQzNjEsLTM4LjI0NzQ4NHQtMTI1LjY0MDY2NSwtMTA0Ljg3MjEzNHQtNzEuMjY1MDMzLC0xNTAuNTIyMzU4dC0yMy44OTIzMjMsLTE4MC45NTU4NHE1Ljc2NzExMyw0LjExMjYzMyAzMy43Nzg4MDIsMjQuNjc1Nzk2dDUxLjA4MDEzOSwzNi42MDI0MzF0NDguNjA4NTIsMzAuMDIyMjE5dDM3Ljg5ODE2OCwxMy45ODI5NTFxMzMuNzc4ODAyLDAgNDUuMzEzMDI3LC0zMC40MzM0ODJxMjAuNTk2ODMsLTU0LjI4Njc1MiA0Ny4zNzI3MSwtOTIuNTM0MjM2dDU3LjI1OTE4OCwtNjIuNTEyMDE3dDcyLjUwMDg0MywtMzkuMDcwMDExdDg0Ljg1ODk0MSwtMjAuOTc0NDI3dDEwMi45ODQxNTIsLTguNjM2NTI5eiIvPgogPC9nPgo8L3N2Zz4=">
+            </label>
+            <label data-tooltip="Marcador" class="tooltip--triangle">
+              <input type="radio" id="brush_m" name="brush" value="m"/>
+              <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODgiIGhlaWdodD0iODgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiA8dGl0bGUvPgoKIDxnPgogIDx0aXRsZT5iYWNrZ3JvdW5kPC90aXRsZT4KICA8cmVjdCBmaWxsPSJub25lIiBpZD0iY2FudmFzX2JhY2tncm91bmQiIGhlaWdodD0iNDAyIiB3aWR0aD0iNTgyIiB5PSItMSIgeD0iLTEiLz4KIDwvZz4KIDxnPgogIDx0aXRsZT5MYXllciAxPC90aXRsZT4KICA8cGF0aCBpZD0ic3ZnXzQiIGQ9Im0yNC42OTk3MjQsMzkuMzk2NzM3bDI0LjczMDcsMjQuNzMwN2wzMS44MjIxLC0zOC4zNWwtMTguMjAzMSwtMTguMjAyOGwtMzguMzQ5NywzMS44MjIxeiIvPgogIDxwYXRoIGlkPSJzdmdfNSIgZD0ibTI3LjA5NTQ2Nyw2OS44Njc0OTdhMC45OTk0LDAuOTk5NCAwIDAgMCAxLjQxNCwwbDIuNzMxNSwtMi43MzE0bDE2LjE3MjIsLTAuOTUxMmwtMjQuNjM1MSwtMjQuNjM0NGwtMC45NTE3LDE2LjE3MTlsLTIuNzMwOSwyLjczMTFhMC45OTk0LDAuOTk5NCAwIDAgMCAwLDEuNDE0bDgsOHoiLz4KICA8cmVjdCBzdHJva2U9Im51bGwiIHRyYW5zZm9ybT0icm90YXRlKDQ1LjkwMTk2OTkwOTY2Nzk3IDE4LjQ2OTE0NDgyMTE2Nyw3MC42NzY2ODE1MTg1NTQ2OSkgIiBpZD0ic3ZnXzgiIGhlaWdodD0iNy43MDA0NzEiIHdpZHRoPSIxMi41OTM4OTMiIHk9IjY2LjgyNjQ1MSIgeD0iMTIuMTcyMTk5IiBmaWxsLW9wYWNpdHk9Im51bGwiIHN0cm9rZS1vcGFjaXR5PSJudWxsIiBzdHJva2Utd2lkdGg9Im51bGwiIGZpbGw9Im51bGwiLz4KIDwvZz4KPC9zdmc+">
+            </label>
+            <label data-tooltip="Lápiz" class="tooltip--triangle">
+              <input type="radio" id="brush_p" name="brush" value="p" />
+              <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KCiA8Zz4KICA8dGl0bGU+YmFja2dyb3VuZDwvdGl0bGU+CiAgPHJlY3QgZmlsbD0ibm9uZSIgaWQ9ImNhbnZhc19iYWNrZ3JvdW5kIiBoZWlnaHQ9IjQwMiIgd2lkdGg9IjU4MiIgeT0iLTEiIHg9Ii0xIi8+CiA8L2c+CiA8Zz4KICA8dGl0bGU+TGF5ZXIgMTwvdGl0bGU+CiAgPHBhdGggdHJhbnNmb3JtPSJyb3RhdGUoNDcuMzg5MTE4MTk0NTgwMDggNDA3Ljc1MzYzMTU5MTc5NjgsMTA3Ljk0MTkyNTA0ODgyODEyKSAiIGlkPSJYTUxJRF81XyIgZD0ibTQ4NC42MDM2MTMsMTMzLjI0MTkzbDAsLTguMWMwLC0yMy41IC0xOSwtNDIuNSAtNDIuNSwtNDIuNWwtNjguNywwYy0yMy41LDAgLTQyLjUsMTkgLTQyLjUsNDIuNWwwLDguMWwxNTMuNywweiIvPgogIDxyZWN0IHRyYW5zZm9ybT0icm90YXRlKDQ3Ljk5NDQ4Nzc2MjQ1MTE3IDI3OC44NjM1NTU5MDgyMDMwNywyMjcuMDUyNDQ0NDU4MDA3ODQpICIgeT0iOTAuNTAyNDY0IiB4PSIyMDIuMDEzNTY3IiB3aWR0aD0iMTUzLjciIGlkPSJYTUxJRF80XyIgaGVpZ2h0PSIyNzMuMSIvPgogIDxwYXRoIHRyYW5zZm9ybT0icm90YXRlKDQ4LjA1MTY3MDA3NDQ2Mjg5IDEwNi42MTY3NDQ5OTUxMTcxNiwzODIuNDEzNjA0NzM2MzI4MSkgIiBpZD0ic3ZnXzQiIGQ9Im0xMDYuNjY2NzQ4LDQ2NC45MTM2MDVjLTIuNiwwIC01LC0xLjUgLTYuMiwtMy45bC02OS44LC0xNTEuNWMtMSwtMi4xIC0wLjgsLTQuNSAwLjQsLTYuNWMxLjIsLTEuOSAzLjQsLTMuMSA1LjcsLTMuMWwxMzkuNywwYzIuMywwIDQuNSwxLjIgNS43LDMuMWMxLjIsMS45IDEuNCw0LjQgMC40LDYuNWwtNjkuOCwxNTEuNGMtMS4xLDIuNSAtMy41LDQgLTYuMSw0em0tNTkuMywtMTUxLjRsNTkuMywxMjguNGw1OS4zLC0xMjguNWwtMTE4LjYsMGwwLDAuMXoiLz4KICA8cG9seWdvbiB0cmFuc2Zvcm09InJvdGF0ZSg0Ny4yNzc5NDY0NzIxNjc5NyA4My4xNjMwNTU0MTk5MjE4Myw0MDQuNzE1NDU0MTAxNTYyNSkgIiBzdHJva2U9Im51bGwiIHBvaW50cz0iNTIuNDcyOTQ2MTY2OTkyMTksMzc0Ljg1MDY1NDYwMjA1MDggMTEzLjg1MzE2NDY3Mjg1MTU2LDM3NC44NTA2NTQ2MDIwNTA4IDgxLjkzMTM1MDcwODAwNzgxLDQzNC41ODAyNjg4NTk4NjMzICIgaWQ9IlhNTElEXzFfIi8+CiA8L2c+Cjwvc3ZnPg==">
+            </label>
+            <label data-tooltip="Borrador" class="tooltip--triangle">
+              <input type="radio" id="brush_e" name="brush" value="e" />
+              <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CgogPGc+CiAgPHRpdGxlPmJhY2tncm91bmQ8L3RpdGxlPgogIDxyZWN0IGZpbGw9Im5vbmUiIGlkPSJjYW52YXNfYmFja2dyb3VuZCIgaGVpZ2h0PSI0MDIiIHdpZHRoPSI1ODIiIHk9Ii0xIiB4PSItMSIvPgogPC9nPgogPGc+CiAgPHRpdGxlPkxheWVyIDE8L3RpdGxlPgogIDxwYXRoIHRyYW5zZm9ybT0icm90YXRlKDAuMTMxMjc0NTk1ODU2NjY2NTYgMTYuMjI3Nzg1MTEwNDc1ODcsMTUuMzk3OTY0NDc3NTM3OTY2KSAiIHN0cm9rZT0ibnVsbCIgaWQ9InN2Z18yIiBkPSJtMjguOTYwODAxLDkuODQ5MzgybC01LjkyNDc1MSwtNS45MjU0MTdjLTEuMTQzMzczLC0xLjE0MzUwMiAtMy4yMjIyMzMsLTEuMTQzNTAyIC00LjM2NTYwNiwwbC03LjM3OTk1Myw3LjM4MDc4M2MwLDAgMCwwIDAsMHMwLDAgMCwwbC03Ljc5NTcyNSw3Ljc5NjYwMWMtMS4yNDczMTYsMS4yNDc0NTYgLTEuMjQ3MzE2LDMuMjIyNTk1IDAsNC4zNjYwOTdsMy45NDk4MzQsMy45NTAyNzhjMC4yMDc4ODYsMC4yMDc5MDkgMC40MTU3NzIsMC4zMTE4NjQgMC43Mjc2MDEsMC4zMTE4NjRsNi44NjAyMzgsMGMwLjMxMTgyOSwwIDAuNTE5NzE1LC0wLjEwMzk1NSAwLjcyNzYwMSwtMC4zMTE4NjRsMTMuMjAwNzYxLC0xMy4yMDIyNDVjMCwwIDAsMCAwLDBjMS4yNDczMTYsLTEuMTQzNTAyIDEuMjQ3MzE2LC0zLjExODY0MSAwLC00LjM2NjA5N3ptLTE0LjM0NDEzNCwxNS44MDExMTJsLTUuOTI0NzUxLDBsLTMuNjM4MDA1LC0zLjYzODQxNGMtMC40MTU3NzIsLTAuNDE1ODE5IC0wLjQxNTc3MiwtMS4wMzk1NDcgMCwtMS40NTUzNjZsNy4wNjgxMjQsLTcuMDY4OTE5bDcuMzc5OTUzLDcuMzgwNzgzbC00Ljg4NTMyMSw0Ljc4MTkxNXoiLz4KIDwvZz4KPC9zdmc+">
+            </label>
 
             <input class="jscolor colorpicker" value="#000000" style="text-align: center;"/>
+            
+            <a href="#" data-tooltip="Salir de la sala" class="tooltip--triangle">
+              <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pjxzdmcgdmlld0JveD0iMCAwIDk2IDk2IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjx0aXRsZS8+PGc+PHBhdGggZD0iTTIwLjQ4NDQsNTRINjZhNiw2LDAsMCwwLDAtMTJIMjAuNDg0NGw3Ljc1NzgtNy43NTc4YTUuOTk5NCw1Ljk5OTQsMCwwLDAtOC40ODQ0LTguNDg0NGwtMTgsMThhNS45OTc5LDUuOTk3OSwwLDAsMCwwLDguNDg0NGwxOCwxOGE1Ljk5OTQsNS45OTk0LDAsMSwwLDguNDg0NC04LjQ4NDRaIi8+PHBhdGggZD0iTTkwLDBINDJhNS45OTY2LDUuOTk2NiwwLDAsMC02LDZWMThhNiw2LDAsMCwwLDEyLDBWMTJIODRWODRINDhWNzhhNiw2LDAsMCwwLTEyLDBWOTBhNS45OTY2LDUuOTk2NiwwLDAsMCw2LDZIOTBhNS45OTY2LDUuOTk2NiwwLDAsMCw2LTZWNkE1Ljk5NjYsNS45OTY2LDAsMCwwLDkwLDBaIi8+PC9nPjwvc3ZnPg==">
+            </a>
 
-            <a href="#">&laquo;Salir</a>
           </div>
-
           <div id="pano">
             <canvas class="drawing"></canvas>
             <canvas class="drawing-preview"></canvas>
           </div>
+          
         </section>
 
       </div>
 
       <div id="drawing" class="hidden">
+        <div class="tools">
+          <a href="#">
+            <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pjxzdmcgdmlld0JveD0iMCAwIDk2IDk2IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjx0aXRsZS8+PGc+PHBhdGggZD0iTTIwLjQ4NDQsNTRINjZhNiw2LDAsMCwwLDAtMTJIMjAuNDg0NGw3Ljc1NzgtNy43NTc4YTUuOTk5NCw1Ljk5OTQsMCwwLDAtOC40ODQ0LTguNDg0NGwtMTgsMThhNS45OTc5LDUuOTk3OSwwLDAsMCwwLDguNDg0NGwxOCwxOGE1Ljk5OTQsNS45OTk0LDAsMSwwLDguNDg0NC04LjQ4NDRaIi8+PHBhdGggZD0iTTkwLDBINDJhNS45OTY2LDUuOTk2NiwwLDAsMC02LDZWMThhNiw2LDAsMCwwLDEyLDBWMTJIODRWODRINDhWNzhhNiw2LDAsMCwwLTEyLDBWOTBhNS45OTY2LDUuOTk2NiwwLDAsMCw2LDZIOTBhNS45OTY2LDUuOTk2NiwwLDAsMCw2LTZWNkE1Ljk5NjYsNS45OTY2LDAsMCwwLDkwLDBaIi8+PC9nPjwvc3ZnPg==">
+          </a>
+        </div>
         <canvas width="800" height="600" style="background-color: white;"></canvas>
       </div>
 

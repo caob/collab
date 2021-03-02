@@ -13,6 +13,7 @@ export default {
    * "Sketch" brush: https://codepen.io/kangax/pen/EjivI
    */
   [BRUSH.SKETCH]: (ctx: CanvasRenderingContext2D, color: number, points: number[], isPreview: boolean = false) => {
+    ctx.globalCompositeOperation="source-over";
     const rgb = getRGB(color);
     ctx.strokeStyle = toHex(color);
     ctx.lineWidth = 1;
@@ -54,6 +55,7 @@ export default {
    * Pen: https://codepen.io/kangax/pen/aoxwb
    */
   [BRUSH.PEN]: (ctx: CanvasRenderingContext2D, color: number, points: number[], isPreview: boolean = false) => {
+    ctx.globalCompositeOperation="source-over";
     ctx.strokeStyle = toHex(color);
     ctx.lineJoin = ctx.lineCap = 'round';
 
@@ -79,6 +81,7 @@ export default {
    * Marker: https://codepen.io/kangax/pen/jLDAf
    */
   [BRUSH.MARKER]: (ctx: CanvasRenderingContext2D, color: number, points: number[], isPreview: boolean = false) => {
+    ctx.globalCompositeOperation="source-over";
     ctx.strokeStyle = toHex(color);
 
     ctx.lineWidth = 3;
@@ -115,6 +118,60 @@ export default {
       ctx.stroke();
     }
   },
+
+   /**
+   * Pen: https://codepen.io/kangax/pen/aoxwb
+   */
+  [BRUSH.ERASER]: (ctx: CanvasRenderingContext2D, color: number, points: number[], isPreview: boolean = false) => {
+    
+    
+    
+    const minWidth = 3;
+    const maxWidth = 5;
+    
+    
+    ctx.globalCompositeOperation="source-over";
+    ctx.strokeStyle = '#fff';
+    //ctx.lineJoin = ctx.lineCap = 'round';
+
+    ctx.lineWidth = Math.floor(Math.random() * (maxWidth - minWidth + 1)) + minWidth;
+
+
+
+    for (let i = (isPreview) ? points.length - 4 : 2; i < points.length; i += 2) {
+      const moveToX = points[i - 2];
+      const moveToY = points[i - 1];
+
+      const currentX = points[i];
+      const currentY = points[i + 1];
+
+      ctx.beginPath();
+      ctx.moveTo(moveToX, moveToY);
+      //ctx.lineTo(currentX, currentY);
+      ctx.arc(currentX,currentY,8,0,Math.PI*2,false);
+      ctx.stroke();
+    }
+
+
+
+    ctx.globalCompositeOperation="destination-out";
+
+
+    for (let i = (isPreview) ? points.length - 4 : 2; i < points.length; i += 2) {
+      const moveToX = points[i - 2];
+      const moveToY = points[i - 1];
+
+      const currentX = points[i];
+      const currentY = points[i + 1];
+
+      ctx.beginPath();
+      ctx.moveTo(moveToX, moveToY);
+      //ctx.lineTo(currentX, currentY);
+      ctx.arc(currentX,currentY,8,0,Math.PI*2,false);
+      ctx.fill();
+    }
+  },
+
 
   /**
    * Rounded: https://codepen.io/kangax/pen/zofsp

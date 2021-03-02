@@ -99,6 +99,7 @@ export class DrawingRoom extends Room<State> {
       await Drawing.create({
         paths: this.state.paths,
         mode: this.roomName,
+        owner: this.roomName.substr(0,2),
         votes: 0,
       });
     }

@@ -37,11 +37,15 @@ mongoose.connect('mongodb+srv://caob:popo0099@cluster0.wybzn.mongodb.net/caob', 
 const app = express();
 const caobsvr = new Server({ server: http.createServer(app) });
 
-caobsvr.define("sala1", DrawingRoom, { expiration: 60 * 2 });
-caobsvr.define("sala2", DrawingRoom, { expiration: 60 * 5 });
-caobsvr.define("sala3", DrawingRoom, { expiration: 60 * 60 });
-caobsvr.define("sala4", DrawingRoom, { expiration: 60 * 60 * 24 });
-caobsvr.define("sala5", DrawingRoom, { expiration: 60 * 60 * 24 });
+caobsvr.define("dv_sala1", DrawingRoom, { expiration: 60 * 2 });
+caobsvr.define("dv_sala2", DrawingRoom, { expiration: 60 * 5 });
+caobsvr.define("dv_sala3", DrawingRoom, { expiration: 60 * 60 });
+caobsvr.define("dv_sala4", DrawingRoom, { expiration: 60 * 60 * 24 });
+caobsvr.define("dm_sala1", DrawingRoom, { expiration: 60 * 2 });
+caobsvr.define("dm_sala2", DrawingRoom, { expiration: 60 * 5 });
+caobsvr.define("dm_sala3", DrawingRoom, { expiration: 60 * 60 });
+caobsvr.define("dm_sala4", DrawingRoom, { expiration: 60 * 60 * 24 });
+
 // caobsvr.define("2minutes", DrawingRoom, { expiration: 60 * 2 });
 // caobsvr.define("5minutes", DrawingRoom, { expiration: 60 * 5 });
 // caobsvr.define("1hour", DrawingRoom, { expiration: 60 * 60 });
@@ -66,6 +70,7 @@ app.use("/", express.static(STATIC_DIR));
 // @colyseus/social routes
 app.use("/", socialRoutes);
 
+
 app.get('/drawings', async (req, res) => {
   res.json(await Drawing.find({}, {
     _id: 1,
@@ -76,7 +81,18 @@ app.get('/drawings', async (req, res) => {
   }));
 });
 
-app.get('/drawings/:id', async (req, res) => {
+app.get('/drawings/o/:owner', async (req, res) => {
+  res.json(await Drawing.find({owner: req.params.owner}, {
+    _id: 1,
+    mode: 1,
+    createdAt: 1,
+  }).sort({
+    createdAt: -1
+  }));
+});
+
+
+app.get('/drawings/i/:id', async (req, res) => {
   res.json(await Drawing.findOne({ _id: req.params.id }));
 });
 

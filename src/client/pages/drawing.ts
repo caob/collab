@@ -12,7 +12,7 @@ export async function showDrawing(_id) {
 
   clearCanvas(drawingCtx);
 
-  const data = (await get(`/drawings/${_id}`)).data;
+  const data = (await get(`/drawings/i/${_id}`)).data;
   data.paths.forEach(path => {
     brushFunctions[path.brush](drawingCtx, path.color, path.points, false);
   });
