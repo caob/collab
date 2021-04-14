@@ -2,7 +2,8 @@ import { Room, Client } from "colyseus";
 import { State, Path, BRUSH, DEFAULT_BRUSH } from "./State";
 import { Player } from "./Player";
 import { generateName } from "../utils/name_generator";
-import Drawing from "../db/Drawing";
+// import Drawing from "../db/Drawing";
+import * as svr from "../index";
 
 export class DrawingRoom extends Room<State> {
   autoDispose = false;
@@ -13,23 +14,26 @@ export class DrawingRoom extends Room<State> {
 
     this.state.countdown = options.expiration;
     this.setSimulationInterval(() => this.countdown(), 1000);
+
+    this.onMessage("brush", (client, message) => this.drawingAction(client, message));
+
   }
 
   onJoin(client: Client, options: any) {
     const player = this.state.createPlayer(client.sessionId);
     player.name = options.nickname || generateName();
 
-    this.lastChatMessages.forEach(chatMsg => this.send(client, ['chat', chatMsg]));
+    this.lastChatMessages.forEach(chatMsg => this.send(client, 'chat', chatMsg));
   }
 
-  onMessage(client: Client, message: any) {
+  drawingAction(client: Client, message: any) {
     const player: Player = this.state.players[client.sessionId];
     const [command, data] = message;
 
     // change angle
     if (command === "chat") {
       const chatMsg = `${player.name}: ${data}`;
-      this.broadcast(['chat', chatMsg]);
+      this.broadcast('chat', chatMsg);
       this.lastChatMessages.push(chatMsg);
 
       // prevent history from being 50+ messages long.
@@ -96,7 +100,7 @@ export class DrawingRoom extends Room<State> {
     console.log("Liberando la sala... aqui es cuando se graba el resultado");
 
     if (this.state.paths.length > 0) {
-      await Drawing.create({
+      await svr.conn.model('Drawing').create({
         paths: this.state.paths,
         mode: this.roomName,
         owner: this.roomName.substr(0,2),

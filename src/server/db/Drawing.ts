@@ -15,7 +15,9 @@ const PathSchema = new mongoose.Schema({
   _id: false
 });
 
-const Drawing: Schema = new Schema<IDrawing>({
+// const Drawing: Schema = new Schema<IDrawing>({
+const Drawing: Schema = new Schema<Document<IDrawing>> ({
+  //'Schema<Document<any>, Model<Document<any>>, undefined>'.
   paths: [PathSchema],
   mode: String,
   votes: Number,
@@ -25,4 +27,5 @@ const Drawing: Schema = new Schema<IDrawing>({
   versionKey: false,
 });
 
-export default mongoose.model<IDrawing>('Drawing', Drawing);
+//export default mongoose.model<IDrawing>('Drawing', Drawing);
+export default Drawing;

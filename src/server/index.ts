@@ -19,7 +19,9 @@ import { monitor } from "@colyseus/monitor";
 import mongoose from 'mongoose';
 
 import { DrawingRoom } from "./rooms/DrawingRoom";
-import Drawing from "./db/Drawing";
+import { TicTacToe } from "./rooms/tictactoe"
+
+// import Drawing from "./db/Drawing";
 
 export const port = Number(process.env.PORT || 8088);
 export const endpoint = "localhost";
@@ -27,12 +29,15 @@ export const endpoint = "localhost";
 export let STATIC_DIR: string;
 
 //process.env.MONGODB_URI || 
-mongoose.connect('mongodb+srv://caob:popo0099@cluster0.wybzn.mongodb.net/caob', {
+const dbConn = mongoose.createConnection('mongodb+srv://caob:popo0099@cluster0.wybzn.mongodb.net/caob', {
   autoIndex: true,
   useCreateIndex: true,
   useFindAndModify: true,
   useNewUrlParser: true,
 });
+
+dbConn.model('Drawing', require('./db/Drawing'));
+
 
 const app = express();
 const caobsvr = new Server({ server: http.createServer(app) });
@@ -45,6 +50,9 @@ caobsvr.define("dm_sala1", DrawingRoom, { expiration: 60 * 2 });
 caobsvr.define("dm_sala2", DrawingRoom, { expiration: 60 * 5 });
 caobsvr.define("dm_sala3", DrawingRoom, { expiration: 60 * 60 });
 caobsvr.define("dm_sala4", DrawingRoom, { expiration: 60 * 60 * 24 });
+
+caobsvr.define('dv_tictactoe', TicTacToe);
+caobsvr.define('dm_tictactoe', TicTacToe);
 
 // caobsvr.define("2minutes", DrawingRoom, { expiration: 60 * 2 });
 // caobsvr.define("5minutes", DrawingRoom, { expiration: 60 * 5 });
@@ -72,7 +80,7 @@ app.use("/", socialRoutes);
 
 
 app.get('/drawings', async (req, res) => {
-  res.json(await Drawing.find({}, {
+  res.json(await dbConn.model('Drawing').find({}, {
     _id: 1,
     mode: 1,
     createdAt: 1,
@@ -82,7 +90,7 @@ app.get('/drawings', async (req, res) => {
 });
 
 app.get('/drawings/o/:owner', async (req, res) => {
-  res.json(await Drawing.find({owner: req.params.owner}, {
+  res.json(await dbConn.model('Drawing').find({owner: req.params.owner}, {
     _id: 1,
     mode: 1,
     createdAt: 1,
@@ -93,11 +101,12 @@ app.get('/drawings/o/:owner', async (req, res) => {
 
 
 app.get('/drawings/i/:id', async (req, res) => {
-  res.json(await Drawing.findOne({ _id: req.params.id }));
+  res.json(await dbConn.model('Drawing').findOne({ _id: req.params.id }));
 });
 
 // add colyseus monitor
 const auth = basicAuth({ users: { 'admin': 'admin' }, challenge: true });
-app.use("/colyseus", auth, monitor(caobsvr));
+app.use("/colyseus", auth, monitor());
 
 export let server = caobsvr;
+export let conn = dbConn;

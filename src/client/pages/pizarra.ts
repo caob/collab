@@ -18,7 +18,7 @@ const chatMessagesEl = chatEl.querySelector('ul');
 chatEl.querySelector('form').addEventListener('submit', (e) => {
   e.preventDefault();
   const input = chatEl.querySelector('input[type=text]') as HTMLInputElement;
-  room.send(['chat', input.value]);
+  room.send('chat', input.value);
   input.value = "";
 });
 
@@ -99,7 +99,7 @@ export async function showPizarra(roomName: string) {
     brushFunctions[path.brush](ctx, path.color, path.points, false);
   }
 
-  room.onMessage((message) => {
+  room.onMessage("chat", (message) => {
     const [cmd, data] = message;
     if (cmd === "chat") {
       const message = document.createElement("li");
@@ -167,13 +167,14 @@ function startPath(x, y) {
   if (!checkRoom()) { return; }
 
   const point = [x, y];
-  room.send(['s', point, color, brush]);
+  room.send('brush', ['s', point, color, brush]);
 
   clearCanvas(prevCtx);
 
   isDrawing = true;
   points = [];
   points.push(...point);
+  
 }
 
 function movePath(x, y) {
@@ -181,14 +182,14 @@ function movePath(x, y) {
   if (!isDrawing) { return; }
 
   const point = [x, y];
-  room.send(['p', point]);
+  room.send('brush',['p', point]);
 
   points.push(...point);
   brushFunctions[brush](prevCtx, color, points, true);
 }
 
 function endPath() {
-  room.send(['e']);
+  room.send('brush',['e']);
 
   isDrawing = false;
   points.length = 0;
